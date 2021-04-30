@@ -25,14 +25,22 @@ const questionPrompt = () => {
             type: 'confirm',
             name: 'confirmTOC',
             message: 'Would you like to add a table of contents?',
-            default: true,
+            default: false,
         },  
         {
             // If user wants table of contents items
             type: 'input',
             name: 'confirmTOC',
-            message: 'Please provide your list items for your Table of Contents.',
-            when: ({confirmTOC}) => confirmTOC
+            message: 'Please provide a list item for your Table of Contents.',
+            default: false
+            //when: ({confirmTOC}) => confirmTOC
+        },
+        {
+            // Prompt for more Table of Contents items
+            type: 'input',
+            name: 'confirmTOC',
+            message: 'Would you like to add another item to the Table of Contents?',
+            default: false
         },
         {
             // Project installation instruction prompt
@@ -64,6 +72,64 @@ const questionPrompt = () => {
                 }
             }
         },
+        {
+            // License prompt
+            type: 'checkbox',
+            name: 'license',
+            message: 'With what licensing did you build this project with?',
+            choices: []
+        },
+        {
+            // Contributing guidelines prompt
+            type: 'confirm',
+            name: 'contribution',
+            message: 'If you created an app or package and would like others to contribute it, please add some guidelines for doing so. Would you like to add contribution guidelines?',
+            default: false
+            // Add more if they say yes
+        },
+        {
+            // Project test instructions prompt
+            type: 'input',
+            name: 'testing',
+            message: 'Please provide testing instructions for you project.',
+            validate: testing => {
+                if (testing) {
+                    return true;
+                } else {
+                    console.log('You MUST include your testing instructions for your project.');
+                    false;
+                }
+            }
+        },
+        {
+            // Questions section prompts
+            // GitHub username prompt
+            type: 'input',
+            name: 'github',
+            message: 'What is your github username?',
+            validate: github => {
+                if (github) {
+                    return true;
+                } else {
+                    console.log('Please enter a valid GitHub username!');
+                    return false;
+                }
+            }
+        },
+        {
+            // Email address prompt
+            type: 'input',
+            name: 'email',
+            message: 'What is your email address?',
+            validate: email => {
+                if (email) {
+                    return true;
+                } else {
+                    console.log('You MUST enter a valid email address!');
+                    return false;
+                }
+            }
+        }
     ]);
 };
 
