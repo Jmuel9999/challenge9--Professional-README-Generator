@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
+const { prompt } = require('inquirer');
 const inquirer = require('inquirer');
 //const generateMarkdown = require('');
 
@@ -22,26 +23,33 @@ const questionPrompt = () => {
         },  
         // Does the user want to add a table of contents?
         {
-            type: 'confirm',
+            type: 'input',
             name: 'confirmTOC',
-            message: 'Would you like to add a table of contents?',
-            default: false,
+            message: 'Please enter your table of contents items.',
+            validate: confirmTOC => {
+                if (confirmTOC) {
+                    return true;
+                } else {
+                    console.log('Please enter your table of contents items.');
+                    return false;
+                }
+            }
         },  
-        {
-            // If user wants table of contents items
-            type: 'input',
-            name: 'confirmTOC',
-            message: 'Please provide a list item for your Table of Contents.',
-            default: false
-            //when: ({confirmTOC}) => confirmTOC
-        },
-        {
-            // Prompt for more Table of Contents items
-            type: 'input',
-            name: 'confirmTOC',
-            message: 'Would you like to add another item to the Table of Contents?',
-            default: false
-        },
+        // {
+        //     // If user wants table of contents items
+        //     type: 'input',
+        //     name: 'confirmTOC',
+        //     message: 'Please provide a list item for your Table of Contents.',
+        //     default: false
+        //     //when: ({confirmTOC}) => confirmTOC
+        // },
+        // {
+        //     // Prompt for more Table of Contents items
+        //     type: 'input',
+        //     name: 'confirmTOC',
+        //     message: 'Would you like to add another item to the Table of Contents?',
+        //     default: false
+        // },
         {
             // Project installation instruction prompt
             type: 'input',
@@ -81,11 +89,17 @@ const questionPrompt = () => {
         },
         {
             // Contributing guidelines prompt
-            type: 'confirm',
+            type: 'input',
             name: 'contribution',
-            message: 'If you created an app or package and would like others to contribute it, please add some guidelines for doing so. Would you like to add contribution guidelines?',
-            default: false
-            // Add more if they say yes
+            message: 'Please add contribution guidelines.',
+            validate: contribution => {
+                if (contribution) {
+                    return true;
+                } else {
+                    console.log('Please enter your contribution guidelines before proceeding!');
+                    return false;
+                }
+            }
         },
         {
             // Project test instructions prompt
@@ -132,14 +146,33 @@ const questionPrompt = () => {
         }
     ]);
 };
-
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    return `
+    <!DOCTYPE html> 
+    <html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Portfolio Demo</title>
+    </head>
 
-// TODO: Create a function to initialize app
-function init() {
-    questionPrompt();
+    <body>
+        <h1>${fileName}</h1>
+        ${data}
+    </body>
+    </html>
+    `;
 };
 
+questionPrompt()
+    .then(writeToFile)
+
+// // TODO: Create a function to initialize app
+// function init() {
+    
+// };
+
 // Function call to initialize app
-init();
+// init();
