@@ -1,15 +1,18 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
-const { prompt } = require('inquirer');
+const {prompt} = require('inquirer');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
+
 //const generateMarkdown = require('');
 
 // TODO: Create an array of questions for user input
 const questionPrompt = () => {
+    // Promise
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'name',
+            name: 'title',
             message: 'What is the title of your project?',
             // Provide place to input title of project
             validate: nameInput => {
@@ -24,10 +27,10 @@ const questionPrompt = () => {
         // Does the user want to add a table of contents?
         {
             type: 'input',
-            name: 'confirmTOC',
+            name: 'tableOfContents',
             message: 'Please enter your table of contents items.',
-            validate: confirmTOC => {
-                if (confirmTOC) {
+            validate: tableOfContents => {
+                if (tableOfContents) {
                     return true;
                 } else {
                     console.log('Please enter your table of contents items.');
@@ -35,21 +38,6 @@ const questionPrompt = () => {
                 }
             }
         },  
-        // {
-        //     // If user wants table of contents items
-        //     type: 'input',
-        //     name: 'confirmTOC',
-        //     message: 'Please provide a list item for your Table of Contents.',
-        //     default: false
-        //     //when: ({confirmTOC}) => confirmTOC
-        // },
-        // {
-        //     // Prompt for more Table of Contents items
-        //     type: 'input',
-        //     name: 'confirmTOC',
-        //     message: 'Would you like to add another item to the Table of Contents?',
-        //     default: false
-        // },
         {
             // Project installation instruction prompt
             type: 'input',
@@ -148,26 +136,18 @@ const questionPrompt = () => {
 };
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Portfolio Demo</title>
-    </head>
-
-    <body>
-        <h1>${fileName}</h1>
-        ${data}
-    </body>
-    </html>
-    `;
+    fs.writeFile(fileName, data, function(err) {
+        if (err) return console.log(err);
+        console.log(data)
+    })
 };
 
 questionPrompt()
-    .then(writeToFile)
+    .then(data => {
+        // Creates readme file and takes the json object that we made (inquirer.prompt) and turns it into a string
+        writeToFile('README.md', generateMarkdown(data));
+        //console.log(data);
+    })
 
 // // TODO: Create a function to initialize app
 // function init() {
