@@ -24,20 +24,35 @@ const questionPrompt = () => {
                 }
             }
         },  
+        // Add a description of project
+        {
+            type: 'input',
+            name: 'description',
+            message: 'Please enter a brief description of your project.',
+            validate: description => {
+                if (description) {
+                    return true;
+                } else {
+                    console.log('You MUST enter a valid description of your project!');
+                    return false;
+                }
+            }
+        },
         // Does the user want to add a table of contents?
         {
             type: 'input',
             name: 'tableOfContents',
-            message: 'Please enter your table of contents items.',
+            message: 'Please enter your table of contents item.',
             validate: tableOfContents => {
                 if (tableOfContents) {
                     return true;
                 } else {
-                    console.log('Please enter your table of contents items.');
+                    console.log('Please enter your table of contents item.');
                     return false;
                 }
             }
-        },  
+        }, 
+        // Would user like go add another list item to Table of Contents? 
         {
             // Project installation instruction prompt
             type: 'input',
