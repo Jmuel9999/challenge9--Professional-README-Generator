@@ -1,11 +1,3 @@
-// If there is a Table of Contents sections (default will be YES)
-const contentsItems = itemData => {
-  if (!itemData) {
-    return ''
-  } else {
-    `${itemData}`
-  }
-};
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
@@ -21,14 +13,18 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README Run this inside fs.writeFile to create a file with this info
 function generateMarkdown(data) {
-  // h1 markdown is #, h2 is ##....etc
+  // h1 markdown is #, h2 is ##....etc. the []'s makes clickable links
   return `
 # *${data.title}*
 ## Description
 - ${data.description}
 ## Table of Contents
-- ${data.tableOfContents}
-* [${contentsItems()}]
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 ## Installation
 - ${data.installation}
 ## Usage
