@@ -42,17 +42,20 @@ const questionPrompt = () => {
         {
             type: 'input',
             name: 'tableOfContents',
-            message: 'Please enter your table of contents item.',
+            message: 'Please enter your table of contents items.',
             validate: tableOfContents => {
                 if (tableOfContents) {
                     return true;
                 } else {
-                    console.log('Please enter your table of contents item.');
+                    console.log('Please enter your table of contents items.');
                     return false;
                 }
             }
         }, 
         // Would user like go add another list item to Table of Contents? 
+        {
+            type: 
+        },
         {
             // Project installation instruction prompt
             type: 'input',
