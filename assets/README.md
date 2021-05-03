@@ -11,4 +11,4 @@ The purpose of this project is to take user input and generate a professional RE
 
 
 ## Screenshot of generated README.md file
-![Example README.md file used in assignment video]
+![Example README.md file used in assignment video](./assets/readmegif)
