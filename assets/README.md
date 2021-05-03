@@ -8,7 +8,7 @@ The purpose of this project is to take user input and generate a professional RE
 * JavaScript
 
 ## Assignment Video Walkthrough
-
+https://drive.google.com/file/d/1icsPqJQq1ss4qj1cu55hdIbggwmEzzFh/view
 
 ## Screenshot of generated README.md file
 ![Example README.md file used in assignment video](./assets/readmegif)
