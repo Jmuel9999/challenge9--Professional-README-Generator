@@ -73,7 +73,7 @@ const questionPrompt = () => {
             type: 'checkbox',
             name: 'license',
             message: 'With what licensing did you build this project with?',
-            choices: []
+            choices: ['MIT', 'Apache', 'GPLv3']
         },
         {
             // Contributing guidelines prompt

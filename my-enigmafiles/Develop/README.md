@@ -1,7 +1,7 @@
 
-# *fjkdsf*
+# *User Project*
 ## Description
-- ds
+- Description of project
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
@@ -10,15 +10,15 @@
 * [Tests](#tests)
 * [Questions](#questions)
 ## Installation
-- fsd
+- Steps to install project
 ## Usage
-- f
+- How to use this app
 ## License
-- 
+- MIT
 ## Contributing
-- sdf
+- This is where we would put guidelines
 ## Tests
-- sdfd
+- The proper way to test this app is to....
 ## Questions
-- github.com/sds
-- sd
+- github.com/Jmuel9999
+- Jmuel9999@alumni.uwsp.edu
